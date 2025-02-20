@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industries - Maa Global Export Import</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        :root {
+            --primary-color: #004d73;
+            --secondary-color: #f4f4f4;
+            --accent-color: #ff9800;
+            --text-color: #333;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-color);
+        }
+
+        .industries-hero {
+            background: linear-gradient(rgba(0,77,115,0.8), rgba(0,77,115,0.8)), url('/api/placeholder/1920/600');
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            margin-top: 60px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .industries-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 1rem;
+        }
+
+        .industry-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .industry-intro h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .industry-intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .industry-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .industry-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .industry-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .industry-content {
+            padding: 1.5rem;
+        }
+
+        .industry-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .industry-content p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .industry-content ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .industry-content ul li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .industry-content ul li:before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #e68a00;
+        }
+
+        .certification-section {
+            background-color: var(--secondary-color);
+            padding: 4rem 0;
+            margin: 4rem 0;
+        }
+
+        .certification-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+
+        .certification-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .certification-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .certification-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                padding: 1rem;
+                flex-direction: column;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu li {
+                margin: 1rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-container">
+            <div class="logo">Maa Global Export Import</div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="industries.html">Industries</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="industries-hero">
+        <div class="hero-content">
+            <h1>Industries We Serve</h1>
+            <p>Providing Premium Quartz Solutions Across Multiple Sectors</p>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <div class="industry-intro">
+            <h2>Serving Global Industries</h2>
+            <p>Our high-quality quartz products serve diverse industries worldwide, meeting specific requirements and international standards. We pride ourselves on delivering custom solutions for each sector's unique needs.</p>
+        </div>
+
+        <div class="industry-grid">
+            <div class="industry-card">
+                <div class="industry-image" style="background-image: url('images/glass\ manufacturing.jpg')"></div>
+                <div class="industry-content">
+                    <h3>Glass Manufacturing</h3>
+                    <p>Premium silica for high-quality glass production.</p>
+                    <ul>
+                        <li>High-purity quartz sand</li>
+                        <li>Precise grain sizing</li>
+                        <li>Low iron content</li>
+                        <li>Consistent quality</li>
+                    </ul>
+                    <a href="contact.html" class="cta-button">Learn More</a>
+                </div>
+            </div>
+
+            <div class="industry-card">
+                <div class="industry-image" style="background-image: url('images/electronics-industry.jpeg')"></div>
+                <div class="industry-content">
+                    <h3>Electronics</h3>
+                    <p>Ultra-pure quartz for electronic components.</p>
+                    <ul>
+                        <li>Semiconductor grade</li>
+                        <li>High chemical purity</li>
+                        <li>Custom specifications</li>
+                        <li>Technical support</li>
+                    </ul>
+                    <a href="contact.html" class="cta-button">Learn More</a>
+                </div>
+            </div>
+
+            <div class="industry-card">
+                <div class="industry-image" style="background-image: url('images/construction.jpeg')"></div>
+                <div class="industry-content">
+                    <h3>Construction</h3>
+                    <p>Quality aggregates for construction projects.</p>
+                    <ul>
+                        <li>Various grades available</li>
+                        <li>Strength and durability</li>
+                        <li>Bulk supply options</li>
+                        <li>Technical consultation</li>
+                    </ul>
+                    <a href="contact.html" class="cta-button">Learn More</a>
+                </div>
+            </div>
+
+            <div class="industry-card">
+                <div class="industry-image" style="background-image: url('images/solar-industry.jpg')"></div>
+                <div class="industry-content">
+                    <h3>Solar Industry</h3>
+                    <p>High-grade quartz for solar panel manufacturing.</p>
+                    <ul>
+                        <li>Solar-grade silicon</li>
+                        <li>High transparency</li>
+                        <li>Certified quality</li>
+                        <li>Research support</li>
+                    </ul>
+                    <a href="contact.html" class="cta-button">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="certification-section">
+        <div class="certification-container">
+            <h2>Industry Standards & Certifications</h2>
+            <div class="certification-grid">
+                <div class="certification-item">
+                    <div class="certification-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>ISO 9001:2015</h3>
+                    <p>Quality Management System</p>
+                </div>
+                <div class="certification-item">
+                    <div class="certification-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>ISO 14001:2015</h3>
+                    <p>Environmental Management</p>
+                </div>
+                <div class="certification-item">
+                    <div class="certification-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>ISO 45001:2018</h3>
+                    <p>Occupational Health & Safety</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="industries.html">Industries</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Information</h4>
+                <ul>
+                    <li>Email: info@maaglobal.com</li>
+                    <li>Phone: +1 234 567 890</li>
+                    <li>Address: Your Business Address</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                    <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-container')) {
+                navMenu.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
